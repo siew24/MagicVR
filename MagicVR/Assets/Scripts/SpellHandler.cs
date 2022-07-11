@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpellHandler : MonoBehaviour
 {
     public Transform drawPoint;
+    public Text text;
 
     private List<LineRenderer> renderers = new();
     private Vector3 previousPoint;
 
     private double minDistance = 0.0001f;
 
+    private GestureRecognition gestureRecognition = new();
+
     private Coroutine updateFunction = null;
     private int pointCount = 0;
+
+    void Awake()
+    {
+        gestureRecognition.loadFromFile("Assets/spells.dat");
+    }
 
     void AddPoint(Vector3 point)
     {
@@ -28,7 +37,11 @@ public class SpellHandler : MonoBehaviour
         {
             if (Vector3.Distance(drawPoint.position, previousPoint) >= minDistance)
             {
+                gestureRecognition.contdStrokeQ(drawPoint.transform.position, drawPoint.transform.rotation);
+
                 AddPoint(drawPoint.position);
+
+                previousPoint = drawPoint.position;
             }
 
             yield return null;
@@ -38,21 +51,26 @@ public class SpellHandler : MonoBehaviour
 
     public void onActivate()
     {
-        GameObject go = new($"LineRenderer_Left_{renderers.Count}");
-        go.transform.position = transform.position;
-        go.transform.rotation = transform.rotation;
+        GameObject go = new($"LineRenderer_{renderers.Count}");
 
-        renderers.Add(go.AddComponent<LineRenderer>());
+        LineRenderer localRenderer = go.AddComponent<LineRenderer>();
 
-        renderers[renderers.Count - 1].startWidth = 0.010f;
-        renderers[renderers.Count - 1].endWidth = 0.010f;
-        renderers[renderers.Count - 1].useWorldSpace = true;
-        renderers[renderers.Count - 1].material = new(Shader.Find("Standard"));
-        renderers[renderers.Count - 1].material.name = $"Material_Left_{renderers.Count}";
-        renderers[renderers.Count - 1].material.color = Color.black;
-        renderers[renderers.Count - 1].material.color = Color.black;
-        renderers[renderers.Count - 1].positionCount = 1;
-        renderers[renderers.Count - 1].SetPosition(0, drawPoint.position);
+        renderers.Add(localRenderer);
+
+        localRenderer.material = new(Shader.Find("Standard"));
+        localRenderer.material.name = $"LineRenderer_material_{renderers.Count}";
+        localRenderer.material.color = Color.black;
+        localRenderer.startWidth = 0.01f;
+        localRenderer.endWidth = 0.01f;
+
+        localRenderer.positionCount = 1;
+
+        gestureRecognition.startStroke(Camera.main.transform.position, Camera.main.transform.rotation);
+        gestureRecognition.contdStrokeQ(drawPoint.position, drawPoint.rotation);
+
+        localRenderer.SetPosition(0, drawPoint.position);
+
+        previousPoint = drawPoint.position;
 
         updateFunction = StartCoroutine(LineUpdate());
     }
@@ -63,6 +81,16 @@ public class SpellHandler : MonoBehaviour
         {
             StopCoroutine(updateFunction);
             updateFunction = null;
+
+            int gestureId = gestureRecognition.endStroke();
+
+            if (gestureId < 0)
+                text.text = $"Spell Recognized: Could not detect spell";
+            else
+                text.text = $"Spell Recognized: {gestureRecognition.getGestureName(gestureId)}";
+
+            Destroy(renderers[renderers.Count - 1].gameObject);
+            renderers.RemoveAt(renderers.Count - 1);
         }
     }
 }
