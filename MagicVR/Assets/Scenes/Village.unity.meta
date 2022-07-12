@@ -1,5 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:MagicVR/Assets/Scenes/Village.unity.meta
 guid: caffec85afc95244ca3e16c6300bf9af
+|||||||| f810e5c:MagicVR/Assets/SpecialSkillsEffectsPack/Patch/Materials/GammaSpaceMaterials(WithoutNormal).unitypackage.meta
+guid: d88a9f1be4cfb2646bd1b0084e535962
+========
+guid: a3cf3579cee0b1d42b3455275a7cca05
+folderAsset: yes
+>>>>>>>> environment:MagicVR/Assets/XR.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

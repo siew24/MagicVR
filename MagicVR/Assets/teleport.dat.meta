@@ -1,5 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:MagicVR/Assets/teleport.dat.meta
 guid: 1d2093adc910a774bacaba75c2ea7225
+|||||||| f810e5c:MagicVR/Assets/SpecialSkillsEffectsPack/Patch/Decals/URPdecal.unitypackage.meta
+guid: 5fcb2fd8ea70a3841848e8fc825ed96f
+========
+guid: 4187294dfa813f34db9178283c3ed85b
+folderAsset: yes
+>>>>>>>> environment:MagicVR/Assets/Plugins/x86_64.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

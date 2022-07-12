@@ -1,5 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:MagicVR/Assets/Models/oculus_cv1_controller_left.mtl.meta
 guid: 3fc4dac8dc2796b488d465d7a4c91ed3
+|||||||| f810e5c:MagicVR/Assets/SpecialSkillsEffectsPack/Patch/Materials/GammaSpaceMaterials.unitypackage.meta
+guid: 55668f51bd7062247ab47ae6db04b65a
+========
+guid: 5855b6385e7d96c4db53dd88bb8bd4d6
+folderAsset: yes
+>>>>>>>> environment:MagicVR/Assets/XR/Loaders.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
