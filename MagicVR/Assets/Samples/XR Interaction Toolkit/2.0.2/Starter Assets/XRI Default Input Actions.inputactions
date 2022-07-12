@@ -1074,11 +1074,11 @@
                 },
                 {
                     "name": "",
-                    "id": "fc3f1d0f-9377-48ea-b479-51a77735a162",
+                    "id": "e12fa3f4-7930-434b-9b10-51897fae59bc",
                     "path": "<XRController>{RightHand}/primary2DAxis",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Continuous Move",
+                    "groups": "",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
