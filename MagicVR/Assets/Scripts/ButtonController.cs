@@ -11,11 +11,6 @@ public class ButtonController : MonoBehaviour
         SceneManager.LoadScene("Level 1");
     }
 
-    public void SecondLevel()
-    {
-        SceneManager.LoadScene("Level 2");
-    }
-
     public void Quit()
     {
         Debug.Log("Game is closing");
