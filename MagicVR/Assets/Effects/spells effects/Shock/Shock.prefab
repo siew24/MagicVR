@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 6104107113015724244}
   m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6104107114863222826}
   m_RootOrder: 1
@@ -4918,8 +4918,8 @@ Transform:
   m_GameObject: {fileID: 6104107114445071217}
   m_LocalRotation: {x: -0.00000019861236, y: 0.7071068, z: 0.7071068, w: 0.00000019861236}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.25, y: 0.5, z: 0.25}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6104107114863222826}
   m_RootOrder: 0
@@ -9724,6 +9724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6104107114863222826}
+  - component: {fileID: 2568920345311325394}
   m_Layer: 0
   m_Name: Shock
   m_TagString: Untagged
@@ -9748,3 +9749,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2568920345311325394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6104107114863222821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec2832414be02942a6881659de6d41a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beam: {fileID: 6104107113015724250}
+  chargeLine: {fileID: 6104107114445071223}

@@ -120,8 +120,10 @@ public class DrawHandler : MonoBehaviour
 
             int gestureId = !isOnTeleportPlatform ? spellRecognition.endStroke() : teleportRecognition.endStroke();
 
+            Debug.Log(isOnTeleportPlatform ? "Teleport Mode" : "Spell Mode");
+
             if (gestureId < 0)
-                Debug.Log($"Could not detect gesture.");
+                Debug.Log($"Could not detect gesture. Error code: {gestureId}");
             else
             {
                 string name = !isOnTeleportPlatform ? spellRecognition.getGestureName(gestureId) : teleportRecognition.getGestureName(gestureId);
@@ -133,7 +135,7 @@ public class DrawHandler : MonoBehaviour
                         onSpellIdentifiedEvent.Raise(name switch
                         {
                             "fireball" => Spell.FireBall,
-                            /*"explosion" => Spell.Explosion, // This is only when the staff is special */
+                            "explosion" => Spell.Explosion, // This is only when the staff is special 
                             "barrier" => Spell.Barrier,
                             "electrify" => Spell.Electrify,
                             "levitation" => Spell.Levitation,
