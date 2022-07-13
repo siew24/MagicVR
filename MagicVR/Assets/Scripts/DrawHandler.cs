@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 using Utilities;
 
@@ -17,10 +16,6 @@ public class DrawHandler : MonoBehaviour
 
     [Header("Listeners")]
     public BaseGameEventListener onTeleportPlatformListener;
-
-    [Header("Assets")]
-    public DefaultAsset spellClassificationAsset;
-    public DefaultAsset teleportClassificationAsset;
 
     private List<LineRenderer> renderers = new();
     private Vector3 previousPoint;
@@ -38,10 +33,10 @@ public class DrawHandler : MonoBehaviour
 
     void Awake()
     {
-        spellRecognition.loadFromFile(AssetDatabase.GetAssetPath(spellClassificationAsset));
+        spellRecognition.loadFromFile("Assets/spells.dat");
 
         if (!isSpecialStaff)
-            teleportRecognition.loadFromFile(AssetDatabase.GetAssetPath(teleportClassificationAsset));
+            teleportRecognition.loadFromFile("Assets/teleport.dat");
     }
 
     void Start()
