@@ -6,23 +6,23 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class Pause : MonoBehaviour
 {
     public GameObject pauseMenu;
-    private bool leftTrigger, rightTrigger;
+    private float leftTrigger, rightTrigger;
 
     [SerializeField] ActionBasedController leftController, rightController;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        leftTrigger = leftController.activateAction.action.ReadValue<bool>();
-        rightTrigger = rightController.activateAction.action.ReadValue<bool>();
+        leftTrigger = leftController.activateAction.action.ReadValue<float>();
+        rightTrigger = rightController.activateAction.action.ReadValue<float>();
 
-        if (leftTrigger && rightTrigger)
+        if (leftTrigger > 0 && rightTrigger > 0)
         {
             Time.timeScale = 0;
             pauseMenu.SetActive(true);

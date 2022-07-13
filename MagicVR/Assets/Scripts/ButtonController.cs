@@ -8,7 +8,7 @@ public class ButtonController : MonoBehaviour
 
     public void FirstLevel()
     {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("scene 1");
     }
 
     public void Quit()

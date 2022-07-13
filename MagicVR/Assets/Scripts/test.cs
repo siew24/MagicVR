@@ -29,11 +29,22 @@ public class Test : MonoBehaviour
     public GameObject fireAuraPrefab;
     public GameObject explosionPrefab;
 
+
+    [Header("Spell Audio")]
+    public AudioClip fireballAudio;
+    public AudioClip barrierAudio;
+    public AudioClip electrifyAudio;
+    public AudioClip levitateAudio;
+    public AudioClip explosionAudio;
+
     [Header("Spell Configs")]
     public float barrierDuration = 3f;
     public float electrifyDuration = 2f;
     public float levitateDuration = 10f;
     public float explosionDuration = 10f;
+
+    [Header("Teleport Audio")]
+    public AudioClip teleportAudio;
 
     [Header("Self References")]
     public CharacterController characterController;
@@ -48,11 +59,6 @@ public class Test : MonoBehaviour
     void Start()
     {
         teleportIdentificationEventListener.Response.AddListener(onTeleportCasted);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     public void onTeleportCasted(Teleport teleport)
@@ -78,6 +84,8 @@ public class Test : MonoBehaviour
                 break;
         }
 
+        AudioSource.PlayClipAtPoint(teleportAudio, transform.position);
+
         onTeleportPlatformEvent.Raise();
     }
 
@@ -93,6 +101,8 @@ public class Test : MonoBehaviour
 
                 fireball.transform.position = transform.position;
                 fireball.transform.forward = forward;
+
+                AudioSource.PlayClipAtPoint(fireballAudio, fireball.transform.position);
                 break;
             case Spell.Explosion:
                 if (explosionReference == null)
@@ -124,6 +134,8 @@ public class Test : MonoBehaviour
 
     IEnumerator BarrierUpdate(GameObject barrier)
     {
+        AudioSource.PlayClipAtPoint(barrierAudio, barrier.transform.position);
+
         float duration = 0;
         while (true)
         {
@@ -141,6 +153,8 @@ public class Test : MonoBehaviour
 
     IEnumerator ElectifyUpdate(GameObject electrify)
     {
+        AudioSource.PlayClipAtPoint(electrifyAudio, electrify.transform.position);
+
         float duration = 0;
         while (true)
         {
@@ -158,6 +172,8 @@ public class Test : MonoBehaviour
 
     IEnumerator LevitationUpdate(GameObject levitate)
     {
+        AudioSource.PlayClipAtPoint(levitateAudio, levitate.transform.position);
+
         float originalY = transform.position.y;
         float duration = 0;
         while (true)
@@ -180,6 +196,8 @@ public class Test : MonoBehaviour
 
     IEnumerator ExplosionUpdate(GameObject explosion)
     {
+        AudioSource.PlayClipAtPoint(explosionAudio, transform.position);
+
         GameObject go = Instantiate(fireAuraPrefab, new Vector3(225.550003f, 4.53000021f, 231.649994f), new());
 
         float duration = 0f;
